@@ -1,9 +1,9 @@
 // Create our 'main' state that will contain the game
 var mainState = {
   preload: function() {
-  // Load the bird sprite, the pipes and background
+  // Load the falcon sprite, the pipes and background
   game.load.image('space', 'assets/space.png');
-  game.load.image('bird', 'assets/falcon2.png');
+  game.load.image('falcon', 'assets/falcon2.png');
   game.load.image('pipe', 'assets/cursorjabba.png');
 },
 
@@ -17,16 +17,16 @@ create: function() {
   // Set the physics system
   game.physics.startSystem(Phaser.Physics.ARCADE);
 
-  // Display the bird at the position x=100 and y=245
-  // Decides where on screen bird is
-  this.bird = game.add.sprite(100, 245, 'bird');
+  // Display the falcon at the position x=100 and y=245
+  // Decides where on screen falcon is
+  this.falcon = game.add.sprite(100, 245, 'falcon');
 
-  // Add physics to the bird
+  // Add physics to the falcon
   // Needed for: movements, gravity, collisions, etc.
-  game.physics.arcade.enable(this.bird);
+  game.physics.arcade.enable(this.falcon);
 
-  // Add gravity to the bird to make it fall
-  this.bird.body.gravity.y = 1000;
+  // Add gravity to the falcon to make it fall
+  this.falcon.body.gravity.y = 1000;
 
   // Call the 'jump' function when the spacekey is hit
   var spaceKey = game.input.keyboard.addKey(
@@ -44,17 +44,17 @@ this.labelScore = game.add.text(20, 20, "0",
 },
 
 update: function() {
-  // If the bird is out of the screen (too high or too low)
+  // If the falcon is out of the screen (too high or too low)
   // Call the 'restartGame' function
-  if (this.bird.y < 0 || this.bird.y > 490)
+  if (this.falcon.y < 0 || this.falcon.y > 490)
       this.restartGame();
 },
 
-// Make the bird jump
+// Make the falcon jump
 jump: function() {
-    // Add a vertical velocity to the bird
-    // Decides how high the bird jumps on spacebar-press
-    this.bird.body.velocity.y = -350;
+    // Add a vertical velocity to the falcon
+    // Decides how high the falcon jumps on spacebar-press
+    this.falcon.body.velocity.y = -350;
 },
 
 // Restart the game
@@ -63,7 +63,7 @@ restartGame: function() {
     game.state.start('main');
 
     game.physics.arcade.overlap(
-    this.bird, this.pipes, this.restartGame, null, this);
+    this.falcon, this.pipes, this.restartGame, null, this);
 },
 
 addOnePipe: function(x, y) {
