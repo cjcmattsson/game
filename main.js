@@ -1,10 +1,10 @@
 // Create our 'main' state that will contain the game
 var mainState = {
   preload: function() {
-  // Load the bird sprite
+  // Load the bird sprite, the pipes and background
   game.load.image('space', 'assets/space.png');
   game.load.image('bird', 'assets/falcon2.png');
-  game.load.image('pipe', 'assets/pipe.png');
+  game.load.image('pipe', 'assets/cursorjabba.png');
 },
 
 create: function() {
@@ -18,6 +18,7 @@ create: function() {
   game.physics.startSystem(Phaser.Physics.ARCADE);
 
   // Display the bird at the position x=100 and y=245
+  // Decides where on screen bird is
   this.bird = game.add.sprite(100, 245, 'bird');
 
   // Add physics to the bird
@@ -52,6 +53,7 @@ update: function() {
 // Make the bird jump
 jump: function() {
     // Add a vertical velocity to the bird
+    // Decides how high the bird jumps on spacebar-press
     this.bird.body.velocity.y = -350;
 },
 
